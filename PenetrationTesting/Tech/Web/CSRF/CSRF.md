@@ -1,4 +1,4 @@
-
+> 本文从属于笔者的[信息安全实战](https://github.com/wxyyxc1992/InfoSecurity-In-Action)中[Web 渗透测试实战](https://github.com/wxyyxc1992/InfoSecurity-In-Action/tree/master/PenetrationTesting/Tech/Web)系列文章。建议先阅读下Martin Fowler的[网络安全基础](https://github.com/wxyyxc1992/InfoSecurity-In-Action/blob/master/Reinforce/WebSecurity/basics-of-web-application-security.md)。
 
 # Cross Site Request Forgery
 CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。CSRF与XSS在攻击手段上有点类似，都是在客户端执行恶意代码，有些文章中认为CSRF与XSS的区别在于CSRF不注重于获取用户Cookie，笔者认为可能还有区别在于CSRF不仅可以在源站发起攻击，还可以引导用户访问其他危险网站的同时发起攻击。XSS全程是跨站脚本攻击，即攻击者向某个Web页面中插入恶意的JavaScript脚本，而当普通用户访问时，该恶意脚本自动执行而从盗取用户的Cookie等信息。对于XSS的防御手段主要就是输入检查与输出检查，譬如对用户输入的文本框内容进行<、>这样的特殊字符检查。而输出检查则是指对于输出到网页的内容进行过滤或者编解码，譬如使用HTML编码将<转义。CSRF为跨站请求伪造，其与XSS有点类似，不过区别在于CSRF不一定依赖于JavaScript，并且不仅可以在源站发起攻击，还有可能当用户访问恶意网站时引导其访问原网站。CSRF攻击是源于WEB的隐式身份验证机制，WEB的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的。对于CSRF的防御也分为服务端防御与客户端防御两种，服务端防御典型的譬如给某个页面添加随机数，使得无法从第三方页面直接提交。在客户端防御的话可以利用譬如Firefox提供的一些检查工具。注意，CSRF并没有打破同源策略。
